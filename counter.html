@@ -1,15 +1,18 @@
 <html>
 
 <head>
-	<title>Plain HTML Sandbox</title>
+	<title>Count Me</title>
 </head>
 
 <body>
   <div id="app">
 	  Counter {{counter}}
     <br>
-	  <button v-on:click="increment()">Increment</button>
-	  <button v-on:click="reset()">Reset</button>
+	  <img height="40" @click="increment()" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Green_Arrow_Up_Darker.svg"> 
+	  <br>
+    <img v-if="counter>0" height="40" @click="counter--" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Red_Arrow_Down.svg">
+	  <br><br>
+    <button v-on:click="reset()">Reset</button>
 	  <button v-on:click="update()">Update</button>
 
   </div>
@@ -31,6 +34,10 @@
         increment: function(){
           this.counter++
           this.setRemoteCounter(this.counter)
+        },
+		    decrement: function(){ 
+          this.counter-- 
+          this.setRemoteCounter(this.counter) 
         },
         reset: function(){
           // Post to the counter to set it to zero. 
